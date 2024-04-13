@@ -10,9 +10,11 @@ public class CharacterController2D : MonoBehaviour
     //public VisualEffect vfxRenderer;
     Rigidbody2D rb;
 
-   
+    public GameObject rotateObject;
+
+    public VisualEffect vfxRenderer;
+
     
-    public float aniSpeed = 1.0f;
     public float runSpeed = 1f;
 
     float horizontalMove = 0f;
@@ -37,13 +39,17 @@ public class CharacterController2D : MonoBehaviour
 
     void Update()
     {
-       
-        
+
+
 
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-        
+        verticalMove = Input.GetAxisRaw("Vertical") * runSpeed; ;
 
-        
+        transform.position += Vector3.right * horizontalMove * Time.deltaTime;
+        transform.position += Vector3.up * verticalMove * Time.deltaTime;
+
+
+
 
         if (Input.GetKey(KeyCode.Space))
         {
@@ -67,10 +73,10 @@ public class CharacterController2D : MonoBehaviour
              }
 
 
-
+        vfxRenderer.SetVector3("ColliderPos", gameObject.transform.localPosition);
 
         animator.SetFloat("speed", Math.Abs(horizontalMove) + Math.Abs(verticalMove));
-        animator.speed = aniSpeed;
+        
 
 
        // vfxRenderer.SetVector3("ColliderPos", gameObject.transform.localPosition);
@@ -89,7 +95,7 @@ public class CharacterController2D : MonoBehaviour
     void Flip()
     {
         facingRight = !facingRight;
-        transform.Rotate(0f,180f,0f);
+        rotateObject.transform.Rotate(0f,180f,0f);
     }
    
 
