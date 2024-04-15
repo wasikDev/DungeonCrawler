@@ -3769,7 +3769,7 @@ GameObject:
   - component: {fileID: 1203688150}
   - component: {fileID: 1203688149}
   - component: {fileID: 1203688148}
-  - component: {fileID: 1203688147}
+  - component: {fileID: 1203688152}
   m_Layer: 0
   m_Name: castleDoorsUpper_0 (1)
   m_TagString: Untagged
@@ -3777,20 +3777,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1203688147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203688146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 075ca579fd1516742b9aa54fd234759c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorClosed: {fileID: -1730300197, guid: d3ed0af8b7bf7cb45893d7a6b732baee, type: 3}
-  doorOpen: {fileID: -1184588386, guid: d3ed0af8b7bf7cb45893d7a6b732baee, type: 3}
 --- !u!114 &1203688148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3933,6 +3919,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1203688152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203688146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb7221eab7a4f04693edb0e9b133c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorClosed: {fileID: -1730300197, guid: d3ed0af8b7bf7cb45893d7a6b732baee, type: 3}
+  doorOpen: {fileID: -1184588386, guid: d3ed0af8b7bf7cb45893d7a6b732baee, type: 3}
 --- !u!43 &1259306389
 Mesh:
   m_ObjectHideFlags: 0
