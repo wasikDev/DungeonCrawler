@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1a2bb177bf47e0c428cfa419529a0c58
+guid: 6e319990b4e265b4b97bb4d19d36d38e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,19 +103,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spartan1_0
+      name: rycerz_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 51
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +124,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 661bd6b5f87c3a8409b8059cc93268c4
-      internalID: -2011883771
+      spriteID: bccccc07d1560db4abd06ab62156d44b
+      internalID: 692195522
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spartan1_1
+      name: rycerz_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe2ced08321db6f40a33c5b318cdb474
+      internalID: -1233514207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rycerz_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 64
-        height: 51
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +166,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a61724183a730d4f9272da6403b074f
-      internalID: 1240852483
+      spriteID: 083a80c71963af542a62277470ca5714
+      internalID: 1233883764
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spartan1_2
+      name: rycerz_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06ced8d665a561b4d845ffc47f7f65ba
+      internalID: 1907591776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rycerz_4
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 64
-        height: 51
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +208,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04c362fb4b3a30e46b6a9ec1bb5373ab
-      internalID: 360562705
+      spriteID: 84cd5ac31cf516447b123554f3b01f41
+      internalID: 473262533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spartan1_3
+      name: rycerz_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 356bd94af3cdcce40b865685acb8cedb
+      internalID: 2144884658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rycerz_6
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 64
-        height: 51
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +250,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da3d5091d3a36314fa50f1644664a955
-      internalID: 1624959787
+      spriteID: fc41df4823f6af744abd5ed1070535ed
+      internalID: -661612427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spartan1_4
+      name: rycerz_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5b9d91a366bd4c42ad064f792a29a7e
+      internalID: 1443417550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rycerz_8
       rect:
         serializedVersion: 2
         x: 256
         y: 0
-        width: 64
-        height: 51
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,20 +292,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fdeaaf5090599a49ad8178dd380c5a1
-      internalID: -1555447340
+      spriteID: b3bd6d213fb72fb46a33fa11ae629537
+      internalID: 1519540120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spartan1_5
+      name: rycerz_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 611c59d71efa0184d8a50ae7e9d98422
+      internalID: 184449912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rycerz_10
       rect:
         serializedVersion: 2
         x: 320
         y: 0
-        width: 64
-        height: 51
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,155 +334,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbd223ef2380217468292c41134862ab
-      internalID: 1767868690
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spartan1_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0167ce3a1fab98e479c0deeb50047bf6
-      internalID: 2030659447
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spartan1_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9cd14efd0be9aa040ae200c1fdc95770
-      internalID: 1346367922
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spartan1_8
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 64
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c26095a32037332469ee7e486de7f837
-      internalID: -606754522
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spartan1_9
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 64
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0867ea8438993514db5f23d522dc3d91
-      internalID: -1860592272
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spartan1_10
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 64
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 87a27ebc70874b24eb42cbaad133cc72
-      internalID: 268902228
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spartan1_11
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 0
-        width: 64
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c75c806154edf134788005d36892215b
-      internalID: 2010255692
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spartan1_12
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 64
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b29cdcedc95862f488078a750762a8b2
-      internalID: -670765597
+      spriteID: 7d0a42653c68c9240a8bb9104fd65727
+      internalID: 1315791100
       vertices: []
       indices: 
       edges: []
@@ -388,22 +351,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spartan1_0: -2011883771
-      spartan1_1: 1240852483
-      spartan1_10: 268902228
-      spartan1_11: 2010255692
-      spartan1_12: -670765597
-      spartan1_2: 360562705
-      spartan1_3: 1624959787
-      spartan1_4: -1555447340
-      spartan1_5: 1767868690
-      spartan1_6: 2030659447
-      spartan1_7: 1346367922
-      spartan1_8: -606754522
-      spartan1_9: -1860592272
-  spritePackingTag: 
+      rycerz_0: 692195522
+      rycerz_1: -1233514207
+      rycerz_10: 1315791100
+      rycerz_2: 1233883764
+      rycerz_3: 1907591776
+      rycerz_4: 473262533
+      rycerz_5: 2144884658
+      rycerz_6: -661612427
+      rycerz_7: 1443417550
+      rycerz_8: 1519540120
+      rycerz_9: 184449912
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
