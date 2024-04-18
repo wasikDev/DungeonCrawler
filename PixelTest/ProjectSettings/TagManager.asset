@@ -8,6 +8,7 @@ TagManager:
   - Fireball
   - wall
   - PlayerLegs
+  - Enemy
   layers:
   - Default
   - TransparentFX

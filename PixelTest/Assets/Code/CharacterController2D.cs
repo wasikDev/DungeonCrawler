@@ -89,6 +89,10 @@ public class CharacterController2D : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.setHealth(currentHealth);
+        if (currentHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 

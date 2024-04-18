@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-
+    public int damage = 25;
     public float speed= 1f;
     public Rigidbody2D rb;
     
@@ -18,6 +18,18 @@ public class Fireball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == "Player" ) 
+        {
+            var target = collision.gameObject.GetComponent<CharacterController2D>();
+            target.TakeDamage(damage);
+        }
+
+        if (collision.gameObject.tag == "Enemy") 
+        {
+            var target = collision.gameObject.GetComponent<AiController>();
+            target.TakeDamage(damage);
+        }
+
         Debug.Log("Destroy!");
         Destroy(this.gameObject);
         
