@@ -6,7 +6,9 @@ using UnityEngine.VFX;
 
 public class AiController : MonoBehaviour
 {
+    public HealthBar hpBar;
     public GameObject target;
+   // public GameObject RotationTarget;
     public float speed = 1f;
     public float range = 10;
     float distance;
@@ -24,26 +26,25 @@ public class AiController : MonoBehaviour
 
     //public Animator animator;
 
+    private Vector2 startpos;
+
     void Start()
     {
         currentHealth = maxHealth;
+        startpos = transform.position;
+
     }
 
 
     void Update()
     {
 
-
-
-       
-
-
         distance = Vector3.Distance(transform.position, target.transform.position);
         Vector3 direction = target.transform.position - transform.position;
         direction.Normalize();
         float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
 
-        if (distance < range)
+        if (distance < range && Time.time > nextAttack)
         {
             if ((direction.x > 0 && !facingRight) || (direction.x < 0 && facingRight))
             {
@@ -52,20 +53,21 @@ public class AiController : MonoBehaviour
             transform.position = Vector3.MoveTowards(this.transform.position, target.transform.position, speed * Time.deltaTime);
 
 
+        }else
+        {
+            if ((direction.x > 0 && !facingRight) || (direction.x < 0 && facingRight))
+            {
+                Flip(); // Funkcja obracaj¹ca AI
+            }
+            transform.position = Vector3.MoveTowards(this.transform.position, startpos, speed * Time.deltaTime);
         }
-
-
-
-
-
-
 
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-       // healthBar.setHealth(currentHealth);
+        hpBar.setHealth(currentHealth);
        if (currentHealth <= 0)
         {
             Destroy(this.gameObject);

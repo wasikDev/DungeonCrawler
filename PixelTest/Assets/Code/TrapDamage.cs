@@ -4,14 +4,20 @@ public class TrapDamage : MonoBehaviour
 {
     public int damage = 25; // Example damage value
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.tag == "Player" ) // Make sure your player GameObject is tagged as "Player"
+        if (collision.gameObject.tag == "Player")
         {
-            //Debug.Log("Enemy is close to the player!");
-           // CharacterController player = other.GetComponent<CharacterController>();
-            var player = collision.GetComponent<CharacterController2D>();
-           player.TakeDamage(damage);
+            var target = collision.gameObject.GetComponent<CharacterController2D>();
+            target.TakeDamage(damage);
         }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            var target = collision.gameObject.GetComponent<AiController>();
+            target.TakeDamage(damage);
+        }
+
+
     }
 }
