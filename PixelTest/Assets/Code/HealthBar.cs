@@ -26,6 +26,7 @@ public class HealthBar : MonoBehaviour
     public void setHealth(int health)
     {
         slider.value = health;
+        Debug.Log("Health bar set to: " + health);
     }
 
     // Method to call when the player takes damage

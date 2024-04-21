@@ -1,16 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu (fileName = "New Item",menuName = "Item/Create New Item")]
 
-    public class Item: ScriptableObject
+public class Item : MonoBehaviour
+{
+    [SerializeField]
+    public string itemName;
+    [SerializeField]
+    public int quantity;
+    [SerializeField]
+    public Sprite sprite;
+    [TextArea]
+    [SerializeField]
+    public string ItemDescription;
+
+    private InventoryManager inventoryManager;
+
+    // Start is called before the first frame update
+    void Start()
     {
-        public int id;
-        public string itemName;
-        public int value;
-        public Sprite icon;
-
-
-
+        inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            int leftOverItems = inventoryManager.AddItem(itemName,quantity,sprite,ItemDescription);
+            if(leftOverItems <= 0)
+            {
+                Destroy(gameObject);
+
+            }
+            else 
+                quantity = leftOverItems;   
+
+        }
+    }
+}
