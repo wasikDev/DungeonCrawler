@@ -39,20 +39,6 @@ public class CharacterController2D : MonoBehaviour
         animator.SetFloat("speed", Math.Abs(horizontalMove) + Math.Abs(verticalMove));
     }
 
-<<<<<<< Updated upstream
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        healthBar.setHealth(currentHealth);
-        if (currentHealth <= 0)
-        {
-            Destroy(this.gameObject);
-        }
-    }
-
-
-=======
->>>>>>> Stashed changes
     void Flip()
     {
         facingRight = !facingRight;

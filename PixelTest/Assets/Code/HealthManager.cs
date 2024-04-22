@@ -18,6 +18,12 @@ public class HealthManager : MonoBehaviour
         currentHealth -= damage;
         healthBar.setHealth(currentHealth);
         Debug.Log("Health after damage change: " + currentHealth);
+        if (currentHealth <= 0)
+        {
+            Destroy(this.gameObject);
+            Time.timeScale = 0;
+            
+        }
     }
 
     public void ChangeHealth(int amount)

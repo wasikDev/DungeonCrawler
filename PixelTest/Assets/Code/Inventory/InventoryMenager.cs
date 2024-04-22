@@ -12,18 +12,18 @@ public class InventoryManager : MonoBehaviour
     public HealthManager healthManager;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Inventory")&& menuActivated) 
+        if (Input.GetButtonDown("Inventory") && menuActivated)
         {
             Time.timeScale = 1;
-        InventoryMenu.SetActive(false);
+            InventoryMenu.SetActive(false);
             menuActivated = false;
-        
+
         }
         else if (Input.GetButtonDown("Inventory") && !menuActivated)
         {
@@ -43,28 +43,35 @@ public class InventoryManager : MonoBehaviour
                 bool usable = itemSos[i].UseItem();
                 return usable;
             }
-        
+
         }
         return false;
 
     }
 
 
-    public int AddItem(string itemName,int quantity,Sprite itemSprite,string itemDescription)
+    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
     {
-       for(int i=0;i<itemSlot.Length;i++)
+        for (int i = 0; i < itemSlot.Length; i++)
         {
-            if(itemSlot[i].isFull==false && itemSlot[i].itemName == itemName || itemSlot[i].quantity ==0 )
+            if ((itemSlot[i].isFull == false && itemSlot[i].itemName == itemName) || itemSlot[i].quantity == 0)
             {
-               int leftOverItems =  itemSlot[i].AddItem(itemName,quantity,itemSprite, itemDescription);
+                int leftOverItems = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription);
+
                 if (leftOverItems > 0)
-                    leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription);
+                {
+                    for (int j = i + 1; j < itemSlot.Length; j++)
+                    {
+                        leftOverItems = itemSlot[j].AddItem(itemName, leftOverItems, itemSprite, itemDescription);
+                        if (leftOverItems == 0) break;
+                    }
+                }
                 return leftOverItems;
             }
-
         }
         return quantity;
     }
+
 
     public void DeselectAllSlots()
     {

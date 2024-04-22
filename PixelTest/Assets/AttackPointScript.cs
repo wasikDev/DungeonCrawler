@@ -12,7 +12,7 @@ public class AttackPointScript : MonoBehaviour
         if (collision.tag == "Player" && Time.time > nextShot) 
         {
            
-            var player = collision.GetComponent<CharacterController2D>();
+            var player = collision.GetComponent<HealthManager>();
             player.TakeDamage(damage);
             nextShot = Time.time+cooldown;
         }

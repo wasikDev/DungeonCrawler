@@ -88,7 +88,7 @@ public class AiController : MonoBehaviour
         if (collision.gameObject.tag == "Player" && Time.time > nextAttack) 
         {
             
-            var player = collision.gameObject.GetComponent<CharacterController2D>();
+            var player = collision.gameObject.GetComponent<HealthManager>();
             player.TakeDamage(damage);
             nextAttack = Time.time + cooldown;
         }

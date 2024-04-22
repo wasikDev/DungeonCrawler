@@ -20,7 +20,7 @@ public class Fireball : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" ) 
         {
-            var target = collision.gameObject.GetComponent<CharacterController2D>();
+            var target = collision.gameObject.GetComponent<HealthManager>();
             target.TakeDamage(damage);
         }
 
