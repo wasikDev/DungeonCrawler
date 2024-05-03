@@ -1,29 +1,36 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 
 public class CharacterController2D : MonoBehaviour
 {
-    Rigidbody2D rb;
+    
     public GameObject rotateObject;
+
     public VisualEffect vfxRenderer;
+
     public float runSpeed = 1f;
     float horizontalMove = 0f;
     float verticalMove = 0f;
     bool facingRight = true;
+
     public Animator animator;
-    public HealthManager healthManager; // Reference to HealthManager
+   
     public Transform firepoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
+
     public GameObject MisslePrefab;
 
     public float cooldown;
     float nextShot;
-    void Start()
-    {
-        rb = gameObject.GetComponent<Rigidbody2D>();
-    }
 
+    public float attackCooldown;
+    float nextAttack;
+
+    public int damage = 20;
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
@@ -32,10 +39,22 @@ public class CharacterController2D : MonoBehaviour
         transform.position += Vector3.right * horizontalMove * Time.deltaTime;
         transform.position += Vector3.up * verticalMove * Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.Space))
-            animator.SetBool("attack", true);
-        else
+
+
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextAttack)
+        {
+            StartCoroutine(Attack());
+            nextAttack = Time.time + attackCooldown;
+        }
+        else 
             animator.SetBool("attack", false);
+        
+
+
+        if (Input.GetKey(KeyCode.E))
+            animator.SetBool("skill", true);
+        else
+            animator.SetBool("skill", false);
 
         if (horizontalMove < 0 && facingRight || horizontalMove > 0 && !facingRight)
             Flip();
@@ -91,6 +110,27 @@ public class CharacterController2D : MonoBehaviour
             direction.Normalize();
             firepoint.transform.position = transform.position + direction * firePointOffset;
         }
+    }
+
+    IEnumerator Attack()
+    {
+        animator.SetBool("attack", true);
+        yield return new WaitForSeconds(0.3f);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(firepoint.position, attackRange, enemyLayers);
+
+        foreach(Collider2D enemy in hitEnemies) {
+
+           enemy.GetComponent<HealthManager>().TakeDamage(damage);
+
+            
+            Debug.Log("We hit " + enemy.name);
+            
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(firepoint.position, attackRange);
     }
 
 }
