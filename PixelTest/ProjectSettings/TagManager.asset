@@ -9,6 +9,7 @@ TagManager:
   - wall
   - PlayerLegs
   - Enemy
+  - EnemyRanged
   layers:
   - Default
   - TransparentFX

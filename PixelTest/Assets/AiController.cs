@@ -6,7 +6,7 @@ using UnityEngine.VFX;
 
 public class AiController : MonoBehaviour
 {
-    public HealthBar hpBar;
+    
     public GameObject target;
    // public GameObject RotationTarget;
     public float speed = 1f;
@@ -18,9 +18,8 @@ public class AiController : MonoBehaviour
     private float nextAttack;
 
     bool facingRight = true;
-
-    public int maxHealth = 100;
-    public int currentHealth;
+    public HealthManager healthManager;
+    
 
     //public HealthBar healthBar;
 
@@ -30,7 +29,7 @@ public class AiController : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth;
+       
         startpos = transform.position;
 
     }
@@ -64,15 +63,7 @@ public class AiController : MonoBehaviour
 
     }
 
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        hpBar.setHealth(currentHealth);
-       if (currentHealth <= 0)
-        {
-            Destroy(this.gameObject);
-        }
-    }
+  
 
 
     void Flip()

@@ -21,7 +21,7 @@ public class HealthManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             Destroy(this.gameObject);
-            Time.timeScale = 0;
+            
             
         }
     }
