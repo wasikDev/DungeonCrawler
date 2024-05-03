@@ -115,7 +115,7 @@ public class CharacterController2D : MonoBehaviour
     IEnumerator Attack()
     {
         animator.SetBool("attack", true);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.45f);
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(firepoint.position, attackRange, enemyLayers);
 
         foreach(Collider2D enemy in hitEnemies) {
