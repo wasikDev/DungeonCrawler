@@ -30,6 +30,11 @@ public class CharacterController2D : MonoBehaviour
     public float attackCooldown;
     float nextAttack;
 
+    public GameObject flamethrower;
+    public float flamethrowerDuration = 1f; // Czas trwania miotacza ognia
+    private float flamethrowerCooldown = 5.0f; // Czas odnowienia miotacza ognia
+    private float nextFlamethrowerTime = 0; // Nastêpny dostêpny czas ataku
+
     public int damage = 20;
     void Update()
     {
@@ -48,13 +53,14 @@ public class CharacterController2D : MonoBehaviour
         }
         else 
             animator.SetBool("attack", false);
-        
 
 
-        if (Input.GetKey(KeyCode.E))
-            animator.SetBool("skill", true);
-        else
-            animator.SetBool("skill", false);
+
+        if (Input.GetKeyDown(KeyCode.E) && Time.time >= nextFlamethrowerTime)
+        {
+            StartCoroutine(ActivateFlamethrower());
+            nextFlamethrowerTime = Time.time + flamethrowerCooldown;
+        }
 
         if (horizontalMove < 0 && facingRight || horizontalMove > 0 && !facingRight)
             Flip();
@@ -112,10 +118,23 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
+    IEnumerator ActivateFlamethrower()
+    {
+        flamethrower.SetActive(true); // W³¹cz trigger i efekty
+        animator.SetBool("skill", true); // Aktywuj animacjê miotacza ognia
+
+        yield return new WaitForSeconds(flamethrowerDuration);
+
+        flamethrower.SetActive(false); // Wy³¹cz trigger i efekty
+        animator.SetBool("skill", false); // Dezaktywuj animacjê miotacza ognia
+    }
+
+
+
     IEnumerator Attack()
     {
         animator.SetBool("attack", true);
-        yield return new WaitForSeconds(0.45f);
+        yield return new WaitForSeconds(0.35f);
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(firepoint.position, attackRange, enemyLayers);
 
         foreach(Collider2D enemy in hitEnemies) {
