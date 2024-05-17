@@ -5,10 +5,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 
-public class CharacterController2D : MonoBehaviour
+public class CharacterController2D_Wizard : MonoBehaviour
 {
-    public GameObject attackIcnon;
-
     public GameObject player;
     public GameObject rotateObject;
     public CinemachineVirtualCamera virtualCamera;
@@ -25,22 +23,23 @@ public class CharacterController2D : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
 
-   
+    public GameObject MisslePrefab;
+
+    public float cooldown;
+    float nextShot;
 
     public float attackCooldown;
     float nextAttack;
 
-    public GameObject flamethrower;
-    public float flamethrowerDuration = 1f; // Czas trwania miotacza ognia
-    private float flamethrowerCooldown = 5.0f; // Czas odnowienia miotacza ognia
-    private float nextFlamethrowerTime = 0; // Nastêpny dostêpny czas ataku
+   
 
     public int damage = 20;
 
     private void Start()
     {
-        virtualCamera.Follow = player.transform;
+        virtualCamera.Follow= player.transform;
     }
+
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
@@ -53,23 +52,18 @@ public class CharacterController2D : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextAttack)
         {
-           
             StartCoroutine(Attack());
             nextAttack = Time.time + attackCooldown;
         }
         else 
             animator.SetBool("attack", false);
 
-        if(Time.time > nextAttack)
-        {
-            attackIcnon.SetActive(true);
-        }
-        else attackIcnon.SetActive(false);
 
-        if (Input.GetKeyDown(KeyCode.E) && Time.time >= nextFlamethrowerTime)
+
+        if (Input.GetKeyDown(KeyCode.E) && Time.time > nextShot)
         {
-            StartCoroutine(ActivateFlamethrower());
-            nextFlamethrowerTime = Time.time + flamethrowerCooldown;
+            Shoot();
+            nextShot = Time.time + cooldown;
         }
 
         if (horizontalMove < 0 && facingRight || horizontalMove > 0 && !facingRight)
@@ -91,7 +85,20 @@ public class CharacterController2D : MonoBehaviour
         rotateObject.transform.Rotate(0f, 180f, 0f);
     }
 
-    
+    void Shoot()
+    {
+        
+        Vector2 shootingDirection = new Vector2(horizontalMove, verticalMove).normalized;
+        if (shootingDirection == Vector2.zero)
+            shootingDirection = facingRight ? Vector2.right : Vector2.left;
+
+        GameObject projectile = Instantiate(MisslePrefab, firepoint.position, Quaternion.identity);
+        projectile.GetComponent<Rigidbody2D>().velocity = shootingDirection * 20f; // Adjust the speed as necessary
+
+        // Rotate the projectile to align with the direction
+        float angle = Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg;
+        projectile.transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
 
     private void UpdateFirePointPosition(float horizontal, float vertical)
     {
@@ -110,18 +117,10 @@ public class CharacterController2D : MonoBehaviour
             firepoint.transform.position = transform.position + direction * firePointOffset;
         }
     }
-
-    IEnumerator ActivateFlamethrower()
-    {
-        flamethrower.SetActive(true); // W³¹cz trigger i efekty
-        animator.SetBool("skill", true); // Aktywuj animacjê miotacza ognia
-
-        yield return new WaitForSeconds(flamethrowerDuration);
-
-        flamethrower.SetActive(false); // Wy³¹cz trigger i efekty
-        animator.SetBool("skill", false); // Dezaktywuj animacjê miotacza ognia
-    }
-
+    
+    
+    
+    
 
 
     IEnumerator Attack()
@@ -133,9 +132,8 @@ public class CharacterController2D : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies) {
 
            enemy.GetComponent<HealthManager>().TakeDamage(damage);
-            yield return new WaitForSeconds(0.35f);
-            enemy.GetComponent<HealthManager>().TakeDamage(damage);
 
+            
             Debug.Log("We hit " + enemy.name);
             
         }

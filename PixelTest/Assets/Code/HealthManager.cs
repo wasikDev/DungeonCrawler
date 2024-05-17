@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class HealthManager : MonoBehaviour
         Debug.Log("Health after damage change: " + currentHealth);
         if (currentHealth <= 0)
         {
+            if(gameObject.tag=="Player") {
+                SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+            }
             Destroy(this.gameObject);
             
             
