@@ -25,8 +25,14 @@ public class HealthManager : MonoBehaviour
                 SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
             }
             Destroy(this.gameObject);
-            
-            
+
+            if (gameObject.tag == "EnemyRanged")
+            {
+                SceneManager.LoadScene("Level2", LoadSceneMode.Single);
+            }
+            Destroy(this.gameObject);
+
+
         }
     }
 

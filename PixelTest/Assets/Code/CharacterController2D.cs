@@ -8,6 +8,7 @@ using UnityEngine.VFX;
 public class CharacterController2D : MonoBehaviour
 {
     public GameObject attackIcnon;
+    public GameObject skillIcnon;
 
     public GameObject player;
     public GameObject rotateObject;
@@ -55,6 +56,7 @@ public class CharacterController2D : MonoBehaviour
         {
            
             StartCoroutine(Attack());
+
             nextAttack = Time.time + attackCooldown;
         }
         else 
@@ -65,6 +67,13 @@ public class CharacterController2D : MonoBehaviour
             attackIcnon.SetActive(true);
         }
         else attackIcnon.SetActive(false);
+
+
+        if (Time.time > nextFlamethrowerTime)
+        {
+            skillIcnon.SetActive(true);
+        }
+        else skillIcnon.SetActive(false);
 
         if (Input.GetKeyDown(KeyCode.E) && Time.time >= nextFlamethrowerTime)
         {
@@ -133,11 +142,22 @@ public class CharacterController2D : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies) {
 
            enemy.GetComponent<HealthManager>().TakeDamage(damage);
-            yield return new WaitForSeconds(0.35f);
-            enemy.GetComponent<HealthManager>().TakeDamage(damage);
-
+            
+            
             Debug.Log("We hit " + enemy.name);
             
+        }
+        yield return new WaitForSeconds(0.45f);
+        Collider2D[] hitEnemies2 = Physics2D.OverlapCircleAll(firepoint.position, attackRange, enemyLayers);
+
+        foreach (Collider2D enemy2 in hitEnemies2)
+        {
+
+            enemy2.GetComponent<HealthManager>().TakeDamage(damage);
+
+
+            Debug.Log("We hit " + enemy2.name);
+
         }
     }
 

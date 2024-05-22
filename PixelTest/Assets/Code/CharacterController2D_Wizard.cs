@@ -7,6 +7,9 @@ using UnityEngine.VFX;
 
 public class CharacterController2D_Wizard : MonoBehaviour
 {
+    public GameObject attackIcnon;
+    public GameObject skillIcnon;
+
     public GameObject player;
     public GameObject rotateObject;
     public CinemachineVirtualCamera virtualCamera;
@@ -48,6 +51,17 @@ public class CharacterController2D_Wizard : MonoBehaviour
         transform.position += Vector3.right * horizontalMove * Time.deltaTime;
         transform.position += Vector3.up * verticalMove * Time.deltaTime;
 
+        if (Time.time > nextAttack)
+        {
+            attackIcnon.SetActive(true);
+        }
+        else attackIcnon.SetActive(false);
+
+        if (Time.time > nextShot)
+        {
+            skillIcnon.SetActive(true);
+        }
+        else skillIcnon.SetActive(false);
 
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextAttack)
@@ -69,7 +83,7 @@ public class CharacterController2D_Wizard : MonoBehaviour
         if (horizontalMove < 0 && facingRight || horizontalMove > 0 && !facingRight)
             Flip();
 
-        vfxRenderer.SetVector3("ColliderPos", gameObject.transform.localPosition);
+        vfxRenderer.SetVector3("ColliderPos", this.gameObject.transform.localPosition);
         animator.SetFloat("speed", Math.Abs(horizontalMove) + Math.Abs(verticalMove));
 
 
@@ -132,11 +146,14 @@ public class CharacterController2D_Wizard : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies) {
 
            enemy.GetComponent<HealthManager>().TakeDamage(damage);
-
             
+           
+
             Debug.Log("We hit " + enemy.name);
             
         }
+        
+       
     }
 
     private void OnDrawGizmos()

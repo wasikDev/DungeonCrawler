@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21dfe549f1b7aba419c8e39b5998f6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 25
   speed: 1
   rb: {fileID: 790235451294849320}
 --- !u!50 &790235451294849320
@@ -241,7 +242,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1.52
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0

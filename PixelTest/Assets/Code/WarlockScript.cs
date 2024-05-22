@@ -7,7 +7,7 @@ public class WarlockScript : MonoBehaviour
 {
     public GameObject projectilePrefab;
     public Transform projectileSpawnPoint; // Punkt, z którego bêd¹ wystrzeliwane pociski
-    public Transform player;
+    public GameObject player;
     public float shootingRange = 10.0f;
     public float shootInterval = 1.5f;
     public float moveSpeed = 5.0f;
@@ -17,27 +17,31 @@ public class WarlockScript : MonoBehaviour
     private float shootTimer;
     public HealthManager healthManager;
     public float range;
-   
+
 
 
     void Start()
     {
-       
+        
+        player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        Vector2 directionToPlayer = (Vector2)(player.position - transform.position);
+        if (player == null) 
+            return;
+
+        Vector2 directionToPlayer = (Vector2)(player.transform.position - transform.position);
         float distanceToPlayer = directionToPlayer.magnitude;
         Vector2 moveDirection = Vector2.zero;
         // Rotate towards the player - horizontal axis only
-        if (player.position.x > transform.position.x)
+        if (player.transform.position.x > transform.position.x)
         {
             transform.localScale = new Vector3(1, 1, 1); // Face right
         }
-        else if (player.position.x < transform.position.x)
+        else if (player.transform.position.x < transform.position.x)
         {
             transform.localScale = new Vector3(-1, 1, 1); // Face left
         }

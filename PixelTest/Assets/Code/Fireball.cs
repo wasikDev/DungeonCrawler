@@ -16,37 +16,16 @@ public class Fireball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            var target = collision.gameObject.GetComponent<HealthManager>();
-            if (target != null)
-            {
-                target.TakeDamage(damage);
-            }
-            
-        }
-        else if (collision.gameObject.tag == "Enemy")
-        {
-            var target = collision.gameObject.GetComponent<HealthManager>();
-            if (target != null)
-            {
-                target.TakeDamage(damage);
-            }
-            
-
-        }
-
-        else if (collision.gameObject.tag == "EnemyRanged")
-        {
-            var target = collision.gameObject.GetComponent<HealthManager>();
-            if (target != null)
-            {
-                target.TakeDamage(damage);
-            }
-
-
-        }
         
+            if(collision.gameObject.GetComponent<HealthManager>()!=null)
+        collision.gameObject.GetComponent<HealthManager>().TakeDamage(damage);  
+
         Destroy(this.gameObject);
+
+
+
     }
-}
+        
+        
+    }
+
