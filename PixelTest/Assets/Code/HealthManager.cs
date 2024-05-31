@@ -22,15 +22,26 @@ public class HealthManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             if(gameObject.tag=="Player") {
-                SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+               
+               
+                
             }
-            Destroy(this.gameObject);
+            else if (gameObject.tag == "GoblinKing")
+            {
 
-            if (gameObject.tag == "EnemyRanged")
+
+
+            }
+            else if(gameObject.tag == "EnemyRanged")
             {
                 SceneManager.LoadScene("Level2", LoadSceneMode.Single);
+                Destroy(this.gameObject);
             }
+            else
             Destroy(this.gameObject);
+
+
+
 
 
         }

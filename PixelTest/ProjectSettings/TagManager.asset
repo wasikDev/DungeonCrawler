@@ -10,6 +10,7 @@ TagManager:
   - PlayerLegs
   - Enemy
   - EnemyRanged
+  - GoblinKing
   layers:
   - Default
   - TransparentFX
